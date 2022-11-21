@@ -30,7 +30,7 @@ public class CardGame {
     public int askPlayerNum(){
         // Will continuously ask the user for a player number until the input is a non-negative integer
         int checkPlayerNum = -1;
-        while (checkPlayerNum <= 0) {
+        while (checkPlayerNum <= 1) {
             // Scans the terminal
             Scanner myObj = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Please enter the number of players:");
@@ -40,7 +40,10 @@ public class CardGame {
                 checkPlayerNum = Integer.parseInt(str);
                 // Checks the player number is non-negative
                 if(checkPlayerNum <= 0){
-                    throw new InvalidPlayersException("Player length must be a non-negative integer!");
+                    throw new InvalidPlayersException("Player number must be a non-negative integer!");
+                }
+                if(checkPlayerNum == 1){
+                    throw new InvalidPlayersException("Number of players must be more than one!");
                 }
             } catch (InvalidPlayersException e) {
                 System.out.println(e.getMessage());
